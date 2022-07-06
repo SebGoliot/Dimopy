@@ -11,8 +11,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+from os import environ
 
-BOT_PUBLIC_KEY = "0000000000000000000000000000000000000000000000000000000000000000"
+BOT_PUBLIC_KEY = environ.get('BOT_PUBLIC_KEY')
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,12 +24,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-*(_-4=d2umw_4cf-wi$7o#h(s&un(ww5#i!f#cpx!*)@=#^@ef'
+SECRET_KEY = environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    environ.get('API_HOST'),
+]
 
 
 # Application definition
